@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static  'css/master.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/employeeProfile.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/userprofile.css'%}" />
+    <link rel="stylesheet" href="{% static  'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg' %}" />
+    <title>profile</title>
+  </head>
+  <body>
+    <div class="parent">
+      <!-- nav-bar -->
+      {% include "constant/nav.html" %}
+
+      <!-- end nav -->
+
+      <div class="employee-info user-info">
+        <div class="container flex">
+          <div class="user">
+            <div class="profile-photo">
+              <img src="{% static "images/profile/pngegg.png" %}" alt="" />
+            </div>
+            <div class="user-details">
+              <h1>{{user.username}}</h1>
+              <h4>{{user.email}}</h4>
+            </div>
+          </div>
+
+          <div class="btn">
+            <a href="{% url "vacations" %}">Confirm Vacations</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

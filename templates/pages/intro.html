@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static  'css/master.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/intro.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/intro/home.svg' %}" />
+    <title>Websites</title>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="overlay"></div>
+      <div class="sites">
+        <div class="container flex">
+          <div class="site">
+            <div class="image">
+              <a href="{% url "home" %}"><i class="fa-solid fa-users"></i></a>
+            </div>
+            <div class="text">
+              <a href="{% url "home" %}"><h2>Human Resources</h2></a>
+            </div>
+          </div>
+          <div class="site">
+            <div class="image">
+              <a href="#"><i class="fa-solid fa-folder"></i></a>
+            </div>
+            <div class="text">
+              <a href="#"><h2>Student Affairs</h2></a>
+            </div>
+          </div>
+          <div class="site">
+            <div class="image">
+              <a href="#"><i class="fa-solid fa-graduation-cap"></i></a>
+            </div>
+            <div class="text">
+              <a href="#"><h2>Higher Studies</h2></a>
+            </div>
+          </div>
+          <div class="site">
+            <div class="image">
+              <a href="#"><i class="fa-solid fa-flask-vial"></i></a>
+            </div>
+            <div class="text">
+              <a href="#"><h2>Laboratory Tracking</h2></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/intro.js'%}"></script>
+  </body>
+</html>

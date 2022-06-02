@@ -1,0 +1,26 @@
+{% load static %}
+
+   <div class="nav">
+        <div class="container flex">
+          <div class="logo">
+            <a href="{% url "home" %}"><img src="{% static 'images/logo-01.svg' %}" alt="logo" /></a>
+          </div>
+          <ul class="nav-menu horezontal">
+            <li><a href="{% url "home" %}" class="btn6">Home</a></li>
+            <li><a href="{% url "employees" %}" class="btn6">Employees</a></li>
+            <li><a href="{% url 'addEmployee'%}" class="btn6">Add Employee</a></li>
+            <li><a href="{% url 'vacationIntro'%}" class="btn6">Vacations</a></li>
+          </ul>
+          <div class="auth-btn">
+            {% if user.is_authenticated %}
+
+            <a href="{% url 'userProfile'  %}" class="btn6">{{user.username}}</a>
+            <a href="{% url 'logout'%}" class="btn6 active">Logout</a>
+            {% else %}
+            <a href="{% url 'login'%}" class="btn6">Login</a>
+            <a href="{% url 'register'%}" class="btn6 active">Register</a>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>

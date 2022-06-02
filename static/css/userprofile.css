@@ -1,0 +1,53 @@
+.parent .user-info .container {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.parent .user-info .container .user{
+  padding: 20px;
+  display: flex;
+
+}
+
+.parent .user-info .container .user .profile-photo {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.parent .user-info .container .user .profile-photo img{
+  filter:invert(1);
+  -webkit-filter:invert(1);
+  width: 100px;
+}
+
+.parent .user-info .container .user .user-details {
+  display: inline-block;
+  text-align: center;
+  margin-left: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.parent .user-info .container .user .user-details h1 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.parent .user-info .container .user .user-details h4 i{
+  margin-left: 10px;
+  color:var(--mainColor);
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.parent .user-info .container .user .user-details h4 i:hover{
+  color:var(--secText);
+}

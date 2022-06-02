@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/master.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/log.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/vacationform.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg'%}" />
+    <title>Vacation Form</title>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="overlay"></div>
+      <!-- nav-bar -->
+      {% include "constant/nav.html" %}
+
+      <div class="form-box">
+        <h1>Vacation Form</h1>
+        <form method="POST" class="form">
+            {% csrf_token %}
+
+            <div class="box">
+            <input list="emp" type="text" name="employee" id="userid" />
+                <datalist id="emp">
+                    {% for emp in employees %}
+                    <option value="{{ emp.id }}">{{ emp }}</option>
+                    {% endfor %}
+                </datalist>
+
+            <label for="userid">Employee Id</label>
+          </div>
+
+            <div class="box">
+{#            <input type="date" name="fromDate" id="from" />#}
+                {{ form.fromDate }}
+            <label for="">From</label>
+                <span id="fromError"></span>
+          </div>
+
+            <div class="box">
+{#          <input type="date" name="toDate" id="to" />#}
+                {{ form.toDate }}
+                <label for="">To</label>
+                <span id="toError"></span>
+            </div>
+
+          <div class="box">
+            <input type="text" id="reason" name="reason" />
+            <label for="">Reason</label>
+          </div><div class="box" hidden>
+            <input type="text" id="status" name="status" value="submitted"  />
+            <label for="status">Status</label>
+          </div>
+
+
+          <div class="btn">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="alert">
+        <i class="fa-solid fa-xmark"></i>
+        <h4>Email or Password not correct</h4>
+      </div>
+    </div>
+    <script src="{% static  'js/vacationform.js'%}"></script>
+    <script src="{% static  'js/jquery-3.6.0.min.js'%}"></script>
+    {% include "ajax/vacationFormAjax.html" %}
+  </body>
+</html>

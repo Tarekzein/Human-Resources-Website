@@ -1,0 +1,26 @@
+
+        <script>
+        // test ajax
+        $(document).ready(function (){
+
+          $.ajax({
+
+            type:"GET",
+            url:"{% url 'homeAjax' %}",
+            success:function (response){
+              let emp=JSON.parse(response["employee"]); // to get the object
+              let fields=emp[0]["fields"]; // get object fields
+                console.log(fields);
+                console.log(fields["profilePicture"]);
+                document.querySelector("#empname").innerHTML=fields["name"];
+                {#document.querySelector("#empPhoto").setAttribute("src",fields["profilePicture"]);#}
+                 $('#empPhoto').html('<img src="media/'+fields["profilePicture"]+ '" />');
+
+            }
+
+          });
+
+        });
+
+
+    </script>

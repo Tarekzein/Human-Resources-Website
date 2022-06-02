@@ -1,0 +1,32 @@
+<script>
+    $("#empID").change(function (){
+        let val=$(this).val();
+
+        $.ajax({
+            url:"{% url "checkEmployeeID" %}",
+
+            data:{
+                "empID":val
+            },
+
+            dataType:"json",
+
+            success:function (response){
+                let bool =response["isTaken"];
+                console.log(bool);
+
+                if(bool===true){
+                    $("#empIDError").html("ID is Taken");
+                }
+
+                else{
+                    $("#empIDError").html("");
+
+                }
+
+            }
+        });
+
+    });
+
+</script>

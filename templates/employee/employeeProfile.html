@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="{% static  'css/master.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/employeeProfile.css'%}" />
+      <link rel="stylesheet" href="{% static  'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg' %}" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <div class="overlay">
+        <div class="message">
+            <h2>Are you sure you want to delete this employee?</h2>
+            <a href="{% url "deleteEmployee" emp.name %}" class=" btn6">yes</a>
+            <a href="" class=" btn6">no</a>
+        </div>
+    </div>
+
+
+    <div class="parent">
+
+      <!-- nav-bar -->
+        {% include "constant/nav.html" %}
+
+      <!-- end nav -->
+
+          <div class="employee-info">
+            <div class="container">
+              <div class="profile-photo" id="empPhoto">
+                <img src="{{emp.profilePicture.url}}" alt="" />
+              </div>
+              <h1 id="empname"> {{emp.name}}</h1>
+              <h4 id="empid"> {{emp.empID}}</h4>
+              <div class="info">
+                <div class="flex" id="info">
+                  <!-- <img src="images\person.jpg" width="200px" height="200px" alt=""> -->
+                  <h3><span>Email:</span> {{emp.empEmail}}</h3>
+                  <h3><span> Address:</span> {{emp.address}}</h3>
+                  <h3><span> Phone Number:</span> {{emp.phoneNum}}</h3>
+                  <h3><span> Gender: </span> {{emp.gender}}</h3>
+                  <h3><span> Marital Status: </span>{{emp.maritalStatus}}</h3>
+                  <h3><span> Available Vacation Days:</span> {{emp.availableVacation}}</h3>
+                  <h3><span> Approved Vacation Days:</span> {{emp.approvedVacation}}</h3>
+                  <h3><span>Salary:</span> {{emp.salaryVacation}}</h3>
+                  <h3><span>Date of birth:</span> {{emp.birthDate}}</h3>
+                </div>
+              </div>
+              <div class="btns">
+                <div class="btn flex">
+                  <a href="{% url "updateEmployee" emp.name %}">Update</a>
+                </div>
+                <div class="btn flex">
+                  <a  id="delbtn">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <script src="{% static "js/employeeProfile.js" %}"></script>
+  </body>
+</html>

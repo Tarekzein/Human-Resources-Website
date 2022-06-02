@@ -1,0 +1,9 @@
+.parent{
+  background-image: url("../images/intro/05.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+.sites .container {
+  justify-content: space-evenly;
+}

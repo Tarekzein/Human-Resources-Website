@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/master.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/log.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/updateProfile.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg'%}" />
+    <title>Update Profile</title>
+  </head>
+  <body>
+    <!-- <div class="overlay"></div> -->
+
+    <div class="parent">
+      <!-- nav-bar -->
+      {% include "constant/nav.html" %}
+
+      <!-- end nav -->
+
+      <div class="form-box">
+        <h1>Update Employee</h1>
+        <form class="form" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="box">
+            <input type="text" name="name" id="name" value="{{emp.name}}" />
+
+            <label for="name">Employee Name</label>
+          </div>
+
+          <div class="box">
+            <input type="text" name="empID" id="id" value="{{emp.empID}}" />
+            <label for="id">Employee ID</label>
+          </div>
+
+          <div class="box">
+            <input
+              type="email"
+              name="empEmail"
+              id="mail"
+              value="{{emp.empEmail}}"
+            />
+
+            <label for="mail">Email</label>
+          </div>
+
+          <div class="box">
+            <input
+              type="text"
+              name="address"
+              id="address"
+              value="{{emp.address}}"
+            />
+
+            <label for="address">Address</label>
+          </div>
+
+          <div class="box">
+            <input
+              type="text"
+              id="tel"
+              name="phoneNum"
+              title="Enter Country code then your number  Example : +20100000000000"
+              value="{{emp.phoneNum}}"
+            />
+
+            <label for="tel">Phone Number</label>
+          </div>
+
+          <h4>Gender</h4>
+          <div class="choose">
+            <input
+              type="radio"
+              id="radio01"
+              name="gender"
+              value="male"
+              checked
+            />
+            <label for="radio01"><span></span>Male</label>
+          </div>
+          <div class="choose">
+            <input type="radio" id="radio02" name="gender" value="Female" />
+            <label for="radio02"><span></span>Female</label>
+          </div>
+
+          <div class="box">
+            {{ form.birthDate }}
+            <label for="">Date of birth</label>
+          </div>
+
+          <div class="box">
+            <div id="wrap">
+              <select name="maritalStatus">
+                <option value="none" selected disabled>Marital Status</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+              </select>
+
+              <span class="icon_arrow"></span>
+            </div>
+          </div>
+
+          <div class="box">
+            <label for="Available">Available Vacation</label>
+            <input
+              type="number"
+              name="availableVacation"
+              min="0"
+              max="365"
+              id="Available"
+              placeholder="0"
+              value="{{emp.availableVacation}}"
+            />
+          </div>
+
+          <div class="box">
+            <label for="Approved">Approved Vacation</label>
+            <input
+              type="number"
+              id="Approved"
+              name="approvedVacation"
+              min="0"
+              max="365"
+              placeholder="0"
+              value="{{emp.approvedVacation}}"
+            />
+          </div>
+
+          <div class="box">
+            <input
+              type="text"
+              name="salaryVacation"
+              id="Salary"
+              maxlength="7"
+              min="0"
+              placeholder="0$"
+              title="Enter salary in US Dollar"
+              value="{{emp.salaryVacation}}"
+            />
+
+            <label for="Salary">Salary</label>
+          </div>
+
+          <div class="wrap">
+            <span class="fit button">
+              <input
+                type="file"
+                name="profilePicture"
+                id="img"
+                accept="image/*"
+                value="{{emp.profilePicture}}"
+              />
+
+              <span>Upload Profile Photo</span>
+            </span>
+            <h4>{{emp.profilePicture}}</h4>
+          </div>
+
+          <div class="btn">
+            <button type="submit">Update</button>
+          </div>
+        </form>
+        <div class="alert">
+          <i class="fa-solid fa-xmark"></i>
+          <h4>Enter Valid Information</h4>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/addemployee.js'%}"></script>
+
+    <script>
+      let status = "{{emp.maritalStatus}}";
+      let gender = "{{emp.gender}}";
+      let r1 = document.querySelector("#radio01");
+      let r2 = document.querySelector("#radio02");
+      let options = document.querySelectorAll("#wrap select option");
+      r1.checked = false;
+      if (gender === "male") {
+        r1.checked = true;
+        r1.checked = "checked";
+        r2.checked = false;
+      } else {
+        r2.checked = true;
+        r2.checked = "checked";
+        r1.checked = false;
+      }
+
+      options.forEach((op) => {
+        op.removeAttribute("selected");
+
+        if (op.value === status) {
+          op.selected = "selected";
+        }
+      });
+    </script>
+  </body>
+</html>

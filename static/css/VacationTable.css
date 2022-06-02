@@ -1,0 +1,16 @@
+.options i {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: normal;
+  cursor: pointer;
+  font-size: 25px !important;
+  transition: 0.3s;
+}
+
+.options #approve i:hover {
+  color:#198654;
+}
+
+.options #reject i:hover {
+  color:#dc3848;
+}

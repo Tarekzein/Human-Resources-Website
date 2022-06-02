@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static  'css/master.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/employees.css'%}" />
+      <link rel="stylesheet" href="{% static  'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg' %}" />
+    <title>Employee Data</title>
+  </head>
+  <body>
+
+
+    
+    <div class="parent">
+      <div class="page-up flex">
+        <i class="fa fa-chevron-up scroll-indicator"></i>
+      </div>
+      <!-- nav-bar -->
+        {% include "constant/nav.html" %}
+
+
+      <div class="info-table">
+
+        <div class="container">
+        <form class="search" method="POST">
+            {% csrf_token %}
+             <input  class="search-txt" id="search" type="text" name="empName" placeholder="Type to search">
+             <button class="search-btn" type="submit" >
+                <i class="fas fa-search"></i>
+             </button>
+        </form>
+
+
+          <table class="table">
+            <thead class="table-head">
+              <tr>
+                <th>Profile</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              {% for emp in employees %}
+              <tr>
+                <td><a href="{% url "profile" emp.name %}"><i class="fa-solid fa-user"></i></a></td>
+                <td>{{emp.empID}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.empEmail}}</td>
+                <td class="options">
+                  <div class="shape">
+
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                  </div>
+                  <ul class="list">
+                    <li><a href="{% url "profile" emp.name %}"> Update</a></li>
+                    <li class="del"><a > Delete</a></li>
+                    <li><a href="{% url "vacationForm" %}"> Submit Vacation</a></li>
+
+                  </ul>
+
+                </td>
+                <td>
+                    <div class="overlay">
+                      <div class="message">
+                        <h2>Are you sure you want to delete {{ emp.name}}?</h2>
+                        <a href="{% url "deleteEmployee" emp.name %}" class=" btn6">yes</a>
+                        <a href="" class=" btn6">no</a>
+                      </div>
+                </div>
+                </td>
+              </tr>
+
+              {% endfor %}
+
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/employees.js'%}"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js'%}"></script>
+    {% include "ajax/employeesAjax.html" %}
+  </body>
+</html>

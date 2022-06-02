@@ -1,0 +1,31 @@
+<script>
+    $("#username").change(function (){
+        let val= $(this).val();
+
+        $.ajax({
+            url:"{% url "checkUsername" %}",
+            data:{
+                "username":val
+            },
+
+            dataType:"json",
+
+            success:function (response){
+
+            let bool=response["exists"];
+            console.log(bool);
+            if(bool===false){
+                $("#usernameError").html("Username is not valid")
+                document.querySelector('.btn button').disabled = true;
+            }
+            if(bool===true){
+                 $("#usernameError").html("")
+                 document.querySelector('.btn button').disabled = false;
+            }
+
+            }
+
+        });
+    });
+
+</script>

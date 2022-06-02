@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/master.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/log.css'%}" />
+
+    <link rel="stylesheet" href="{% static 'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg'%}" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="overlay"></div>
+      <!-- nav-bar -->
+      {% include "constant/nav.html" %}
+
+      <div class="form-box">
+        <h1>Register</h1>
+        <form class="form" method="POST" action="">
+          {% csrf_token %}
+
+          <div class="box">
+            {% comment %} {{form.username}} {% endcomment %}
+            <input type="text" id="name" name="username" />
+            <label for="name">Username</label>
+            <span id="usernameError"></span>
+          </div>
+
+          <div class="box">
+            <input type="email" id="email" name="email" />
+            {% comment %} {{form.email}} {% endcomment %}
+            <label for="email">Email</label>
+          </div>
+
+          <div class="box">
+            <input
+              type="password"
+              id="pass"
+              name="password1"
+              placeholder="Enter strong password"
+              title="Enter Password contains Letters and Numbers"
+            />
+            {% comment %} {{form.password1}} {% endcomment %}
+
+            <label for="pass">Password</label>
+          </div>
+
+          <div class="box">
+            <input type="password" id="pass2" name="password2" />
+            {% comment %} {{form.password2}} {% endcomment %}
+            <label for="pass2">Confirm Password</label>
+          </div>
+
+          <div class="btn">
+            <button type="submit">Register</button>
+          </div>
+        </form>
+      </div>
+      <div class="alert">
+        <i class="fa-solid fa-xmark"></i>
+        <h4>Email or Password not correct</h4>
+      </div>
+    </div>
+    <script src="{% static 'js/regester.js'%}"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js'%}"></script>
+  {% include "ajax/registerAjax.html" %}
+  </body>
+</html>

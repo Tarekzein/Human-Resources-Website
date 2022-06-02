@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static  'css/master.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/intro.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/vacationIntro.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg' %}" />
+    <title>Vacation Intro</title>
+  </head>
+
+  <body>
+    <div class="parent">
+      {% include "constant/nav.html" %}
+
+        <div class="sites">
+        <div class="container flex">
+          <div class="site">
+            <div class="image">
+              <a href="{% url "vacations" %}"><i class="fa-solid fa-list-check"></i></a>
+            </div>
+            <div class="text">
+              <a href="{% url "vacations" %}"><h2>Vacations List</h2></a>
+            </div>
+          </div>
+          <div class="site">
+            <div class="image">
+              <a href="{% url "vacationForm" %}"><i class="fa-solid fa-file-signature"></i></a>
+            </div>
+            <div class="text">
+              <a href="{% url "vacationForm" %}"><h2>Vacation Form</h2></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>

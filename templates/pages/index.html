@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static  'css/master.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg' %}" />
+    <!-- <link rel="stylesheet" href="./css/normalize.css" /> -->
+    <title>Human Resources</title>
+  </head>
+  <body>
+    <div class="load-icon"><img src="{% static 'images/logo-01.svg' %}" alt="" /></div>
+
+    <div class="parent">
+      <!-- page-up button -->
+      <div class="page-up flex">
+        <i class="fa fa-chevron-up scroll-indicator"></i>
+      </div>
+
+      <div class="go-back">
+        <a href="{% url "intro" %}"><i class="fa-solid fa-arrow-left"></i></a>
+      </div>
+      <!-- end page-up button -->
+
+      <!-- nav-bar -->
+    {% include "constant/nav.html" %}
+
+      <!-- start Landing -->
+      <div class="landing">
+        <!-- overlay layer -->
+        <div class="overlay"></div>
+        <!-- home content -->
+        <div class="home">
+          <div class="intro-text">
+            <h1 class="typing-demo">Welcome To Human Resources Agency</h1>
+            <br />
+            <!-- <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
+              praesentium id dolor, corporis inventore cumque! praesentium id
+              dolor, corporis inventore cumque! dolor, corporis inventore
+              cumque! dolor, corporis inventore cumque!
+            </p> -->
+            <div class="about-btn">
+              <a href="#footer"> <h3>Want To Contact Us ?</h3></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end Landing -->
+
+      <!-- start about -->
+      <div class="about" id="about">
+        <div class="overlay slideRight"></div>
+        <div class="about-content">
+          <div class="container flex">
+            <div class="text fadeInverse">
+              <h2>Vacation Form</h2>
+              <div class="about-btn">
+                <a href="{% url 'vacationForm'%}"><h3>Create</h3></a>
+              </div>
+            </div>
+            <div class="photo scaleInverse">
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end about -->
+
+      <!-- start Best Employee -->
+      <div class="best-employee">
+        <div class="bg-img"></div>
+        <div class="container flex">
+          <div class="col">
+            <div class="card flex">
+              <div class="card-photo" id="empPhoto">
+
+              </div>
+              <div class="card-body">
+                <h2 class="text" id="empname"></h2>
+
+                <h4 class="text">Employee of the month</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="progress">
+              <div class="skill">
+                <div class="title"><h3>Team Leading</h3></div>
+                <div class="bar">
+                  <span data-prog="95%"></span>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="title"><h3>Team Work</h3></div>
+                <div class="bar">
+                  <span data-prog="90%"></span>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="title"><h3>Social work</h3></div>
+                <div class="bar">
+                  <span data-prog="97%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end Best Employee -->
+
+      <!-- start footer -->
+
+      <footer class="footer" id="footer">
+        <div class="container">
+          <div class="copy-right">
+            <p>&copy; All copy rights are reserved</p>
+          </div>
+          <div class="contacts">
+            <a onclick="openFacebook()"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+
+            <a onclick="openLinkedin()"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+
+            <a onclick="openInstagram()"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+
+            <a href="mailto:nourmuhammed36@gmail.com"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </footer>
+
+      <!-- end footer -->
+    </div>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js'%}"></script>
+
+    {% include "ajax/indexAjax.html" %}
+
+  </body>
+</html>
+

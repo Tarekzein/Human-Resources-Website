@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static  'css/master.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/employees.css'%}" />
+      <link rel="stylesheet" href="{% static 'css/VacationTable.css'%}" />
+      <link rel="stylesheet" href="{% static  'css/all.min.css'%}" />
+    <link rel="shortcut icon" href="{% static 'images/logo-01.svg' %}" />
+    <title>Vacation Requests</title>
+  </head>
+  <body>
+
+
+    
+    <div class="parent">
+
+      <!-- nav-bar -->
+        {% include "constant/nav.html" %}
+      
+      <div class="info-table">
+        <div class="container">
+          <table class="table">
+            <thead class="table-head">
+              <tr>
+
+                <th>Name</th>
+                <th>ID</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              {% for vac in vacations %}
+              <tr>
+                <td>{{vac.employee.name}}</td>
+                <td>{{vac.employee.empID}}</td>
+                <td>{{vac.fromDate}}</td>
+                <td>{{vac.toDate}}</td>
+                <td>{{vac.reason}}</td>
+                <td>{{vac.status}}</td>
+                <td class="options">
+                    <a href="{% url "vacationApprove" vac.id %}" id="approve"><i class="fa-regular fa-circle-check"></i></a>
+                    <a href="{% url "vacationReject" vac.id %}" id="reject"><i class="fa-regular fa-circle-xmark"></i></a>
+                </td>
+              </tr>
+
+
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/employees.js'%}"></script>
+  </body>
+</html>

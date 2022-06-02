@@ -1,0 +1,58 @@
+<script>
+
+     $("#id_fromDate").change(function(){
+        let fromDate=$(this).val();
+
+        console.log("Searching");
+        $.ajax({
+            url:"{% url "checkFromDate" %}",
+            data:{
+                "fromDate":fromDate,
+            },
+            dataType:"json",
+            success:function (response){
+                let bool=response["isValid"];
+                if(bool===false){
+                    $("#fromError").html("Enter Valid Date");
+                    document.querySelector('.btn button').disabled = true;
+                }
+                else{
+                    $("#fromError").html("");
+                    document.querySelector('.btn button').disabled = false;
+                }
+
+            }
+        });
+    });
+
+        $("#id_toDate").change(function(){
+        let toDate=$(this).val();
+        let fromDate=$("#id_fromDate").val();
+
+        console.log("Searching");
+        $.ajax({
+            url:"{% url "checkToDate" %}",
+            data:{
+                "toDate":toDate,
+                "fromDate":fromDate,
+            },
+            dataType:"json",
+            success:function (response){
+                let bool=response["isValid"];
+                if(bool===false){
+                    $("#toError").html("Enter Valid Date");
+                    document.querySelector('.btn button').disabled = true;
+                }
+                else{
+                    $("#toError").html("");
+                    document.querySelector('.btn button').disabled = false;
+
+                }
+
+            }
+        });
+    });
+
+</script>
+
+
